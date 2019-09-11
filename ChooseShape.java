@@ -8,6 +8,7 @@ public class ChooseShape
     int sides, angle;
     double apothem;
     int initial_forward;
+    String color;
     public void main()
     {
         ConsoleIO keyboard = new ConsoleIO();
@@ -17,9 +18,9 @@ public class ChooseShape
         paper = new SketchPad(500, 500); 
         pencil = new DrawingTool(paper);
         input(keyboard);
-        drawing = new DrawObject(sides, angle, apothem, initial_forward);
+        drawing = new DrawObject(sides, angle, initial_forward);
         getColor(pencil, keyboard);
-        draw(pencil, keyboard);
+        drawing.Art();
     }
     
     public void input(ConsoleIO keyboard)
@@ -29,6 +30,8 @@ public class ChooseShape
        angle = 180 - ((sides - 2) * 180)/sides;
        apothem = (100)/(2*(Math.tan(3.14/sides)));
        initial_forward =(int)apothem;
+       System.out.print("Please enter the color of the shape you want");
+
     }
     
     public static void getColor(DrawingTool pencil, ConsoleIO keyboard)
