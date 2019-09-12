@@ -14,27 +14,34 @@ public class Main
         int repeat;
     
         ConsoleIO InputStream = new ConsoleIO();
-        CountdownSong monkeys = new CountdownSong();
-        ChooseShape drawing = new ChooseShape();
         
         do
         {
             System.out.print("Please enter what program you want to run:\n");
             System.out.print("1.Monkeys\n");
             System.out.print("2.Draw Shape\n");
+            System.out.print("3.Move dot\n");
             choice = InputStream.readInt();
             switch(choice)
             {
                 case 1:
                     {
+                        CountdownSong monkeys = new CountdownSong();
                         monkeys.main();
                         break;
                     }
                 case 2:
                     {
+                        ChooseShape drawing = new ChooseShape();
                         drawing.main();
                         break;
                     }   
+                case 3:
+                    {
+                       SpriteTest dot = new SpriteTest();
+                       dot.main();
+                       break;
+                    }
                }
             System.out.print("Would you like to play again?\n");
             System.out.print("1. Yes\n");

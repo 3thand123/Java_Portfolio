@@ -11,11 +11,11 @@ public class DrawObject
     int forward_initial;
     DrawingTool pencil;
     SketchPad paper;
-    Color color = (25,25,25);
+    Color shade;
     /**
      * Constructor for objects of class DrawObject
      */
-    public DrawObject(int sides, int angle, int initial_forward)
+    public DrawObject(int sides, int angle, int initial_forward, int red, int blue, int green)
     {
         // initialise instance variables
         num_sides = sides;
@@ -23,14 +23,10 @@ public class DrawObject
         forward_initial = initial_forward;
         paper = new SketchPad(500, 500); 
         pencil = new DrawingTool(paper);
-        pencil.setColor(Color.color);
+        shade = new Color(red,blue,green);
+        pencil.setColor(shade);
     }
 
-    public void Color()
-    {
-        
-    }
-    
     public void Art()
     {
        pencil.up();
