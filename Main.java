@@ -20,8 +20,8 @@ public class Main
             System.out.print("1.Monkeys\n");
             System.out.print("2.Draw Shape\n");
             System.out.print("3.Etch a Sketch\n");
-            System.out.print("4.Move dot\n");
-            choice = InputStream.readInt();
+            System.out.print("4.Snake Game\n");
+            choice = InputStream.readLine();
             switch(choice)
             {
                 case 1:
