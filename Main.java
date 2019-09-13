@@ -14,7 +14,6 @@ public class Main
         String repeat;
     
         ConsoleIO InputStream = new ConsoleIO();
-        
         do
         {
             System.out.print("Please enter what program you want to run:\n");

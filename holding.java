@@ -16,7 +16,7 @@ public class MoveDot
     int x_coordinate, y_coordinate;
     int consumed;
     SketchPad canvas;
-    DrawingTool pencil, apple, grid, writer;
+    DrawingTool pencil, apple, grid, tester;
     Random rand;
     String input = "0";
     ConsoleIO typer;
@@ -33,7 +33,8 @@ public class MoveDot
         pencil = new DrawingTool(canvas);
         apple = new DrawingTool(canvas);
         grid = new DrawingTool(canvas);
-        writer = new DrawingTool(canvas);
+        tester = new DrawingTool(canvas);
+        tester = new DrawingTool(canvas);
         apple.setColor(Color.RED);
         typer = new ConsoleIO();
         rand = new Random();
@@ -47,10 +48,6 @@ public class MoveDot
     
     public void main()
     {
-        writer.up();
-        writer.move(50,50);
-        writer.down();
-        writer.drawString("Score:");
         while(!"stop".equals(input))
         {
             if (eaten == true)
@@ -66,25 +63,6 @@ public class MoveDot
                 apple.down();
                 apple.drawCircle(3);
                 consumed++;
-                if (consumed > 1)
-                {
-                    writer.up();
-                    writer.home();
-                    writer.turnRight(90);
-                    writer.forward(50 + consumed*4);
-                    writer.turnLeft(90);
-                    writer.forward(30);
-                    writer.turnLeft(90);
-                    writer.up();
-                    //writer.turnRight(90);
-                    writer.forward(10);
-                    writer.down();
-                    writer.turnRight(90);
-                    writer.forward(10);
-                    writer.up();
-                    writer.backward(10);
-                    writer.turnLeft(180);
-                }   
                 eaten = false;
             }
             if (x_coordinate == x && y_coordinate == y)
@@ -96,23 +74,24 @@ public class MoveDot
             {
                 case "5":
                     if(down == true){
-                        pencil.turnLeft(180);
-                        //pencil.forward(5 * consumed);
+                       pencil.turnLeft(180);
                     }
                     else
                         if (left == true){
+                            pencil.backward(5 * consumed);
                             pencil.setColor(Color.WHITE);
-                            pencil.backward(5*consumed);
-                            pencil.forward(5*consumed);
+                            pencil.forward(5);
                             pencil.setColor(Color.BLACK);
+                            pencil.forward(5 * consumed - 5);
                             pencil.turnRight(90);
                         }
                         else
                             if(right == true){
+                                pencil.backward(5 * consumed);
                                 pencil.setColor(Color.WHITE);
-                                pencil.backward(5*consumed);
-                                pencil.forward(5*consumed);
-                                pencil.setColor(Color.BLACK);
+                                pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                                 pencil.turnLeft(90);
                             }
                      pencil.backward(5 * consumed);
@@ -130,22 +109,23 @@ public class MoveDot
                 case "2":
                     if(up == true){
                       pencil.turnLeft(180);
-                      //pencil.forward(5 * consumed);
                     }
                     else
                         if (left == true){
-                            pencil.setColor(Color.WHITE);
-                            pencil.backward(5*consumed);
-                            pencil.forward(5*consumed);
-                            pencil.setColor(Color.BLACK);
+                            pencil.backward(5 * consumed);
+                     pencil.setColor(Color.WHITE);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                             pencil.turnLeft(90);
                         }
                         else
                             if(right == true){
-                               pencil.setColor(Color.WHITE);
-                               pencil.backward(5*consumed);
-                               pencil.forward(5*consumed);
-                               pencil.setColor(Color.BLACK);
+                               pencil.backward(5 * consumed);
+                     pencil.setColor(Color.WHITE);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                                pencil.turnRight(90);
                             }
                             else
@@ -166,24 +146,25 @@ public class MoveDot
                      break;
                 case "1":
                     if(up == true){
-                       pencil.setColor(Color.WHITE);
-                       pencil.backward(5*consumed);
-                       pencil.forward(5*consumed);
-                       pencil.setColor(Color.BLACK);
+                       pencil.backward(5 * consumed);
+                     pencil.setColor(Color.WHITE);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                        pencil.turnLeft(90);
                     }
                     else
                         if (down == true) {
-                            pencil.setColor(Color.WHITE);
-                            pencil.backward(5*consumed);
-                            pencil.forward(5*consumed);
-                            pencil.setColor(Color.BLACK);
+                           pencil.backward(5 * consumed);
+                     pencil.setColor(Color.WHITE);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                             pencil.turnRight(90);
                         }
                         else
                             if(right == true) {
                                pencil.turnRight(180);
-                               //pencil.forward(5 * consumed);
                             }
                             else
                                 if (left == false){
@@ -203,23 +184,24 @@ public class MoveDot
                      break;
                 case "3":
                     if(up == true) {
-                        pencil.setColor(Color.WHITE);
-                        pencil.backward(5*consumed);
-                        pencil.forward(5*consumed);
-                        pencil.setColor(Color.BLACK);
+                        pencil.backward(5 * consumed);
+                     pencil.setColor(Color.WHITE);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                         pencil.turnRight(90);
                     }
                     else
                         if (left == true) {
                             pencil.turnLeft(180);
-                            //pencil.forward(5 * consumed);
                         }
                         else
                             if(down == true) {
-                               pencil.setColor(Color.WHITE);
-                               pencil.backward(5*consumed);
-                               pencil.forward(5*consumed);
-                               pencil.setColor(Color.BLACK);
+                              pencil.backward(5 * consumed);
+                     pencil.setColor(Color.WHITE);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
+                     pencil.forward(5 * consumed - 5);
                                pencil.turnLeft(90);
                             }
                             else
@@ -243,11 +225,8 @@ public class MoveDot
                      System.out.print(x + "," + y);
                      break;
                 case "c":
-                     grid.up();
-                     grid.setColor(Color.GREEN);
-                     grid.move(x_coordinate, y_coordinate);
-                     grid.down();
-                     grid.drawCircle(3);
+                     pencil.setColor(Color.BLACK);
+                     pencil.drawCircle(5);
                 default:
                     break;
             } 
