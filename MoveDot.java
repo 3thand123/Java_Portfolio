@@ -1,4 +1,3 @@
-
 import java.util.*;
 import chn.util.*;
 import apcslib.*;
@@ -9,7 +8,7 @@ import java.awt.Color;
  * @author (Ethan Davies)
  * @version (V.1)
  */
-public class SpriteTest
+public class MoveDot
 {
     // instance variables - replace the example below with your own
     private int x;
@@ -23,13 +22,12 @@ public class SpriteTest
     /**
      * Constructor for objects of class SpriteTest
      */
-    public SpriteTest()
+    public MoveDot()
     {
         // initialise instance variables
         canvas = new SketchPad(500,500);
         pencil = new DrawingTool(canvas);
         typer = new ConsoleIO();
-        color = new Color(0,0,0);
         pencil.setWidth(1);
     }
 
@@ -40,7 +38,6 @@ public class SpriteTest
         while(!"stop".equals(input))
         {
             input = typer.readLine();
-            pencil.setColor(color);
             switch (input)
             {
                 case "5":
@@ -55,6 +52,10 @@ public class SpriteTest
                             if(right == true){
                                 pencil.turnLeft(90);
                             }
+                     pencil.setColor(Color.WHITE);
+                     pencil.backward(5);
+                     pencil.forward(5);
+                     pencil.setColor(Color.BLACK);
                      pencil.forward(5);
                      up = true;
                      down = false;
@@ -63,7 +64,7 @@ public class SpriteTest
                      break;
                 case "2":
                     if(up == true){
-                     pencil.turnLeft(180);
+                      pencil.turnLeft(180);
                     }
                     else
                         if (left == true){
@@ -132,12 +133,6 @@ public class SpriteTest
                      break;
                 case "r":
                      radius = typer.readInt();
-                     break;
-                case "e":
-                     color = new Color(255,255,255);
-                     break;
-                case "d":
-                     color = new Color(0,0,0);
                      break;
                 default:
                     break;

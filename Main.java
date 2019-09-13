@@ -11,7 +11,7 @@ public class Main
     public Main()
     {
         int choice;
-        int repeat;
+        String repeat;
     
         ConsoleIO InputStream = new ConsoleIO();
         
@@ -20,7 +20,8 @@ public class Main
             System.out.print("Please enter what program you want to run:\n");
             System.out.print("1.Monkeys\n");
             System.out.print("2.Draw Shape\n");
-            System.out.print("3.Move dot\n");
+            System.out.print("3.Etch a Sketch\n");
+            System.out.print("4.Move dot\n");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -38,16 +39,21 @@ public class Main
                     }   
                 case 3:
                     {
-                       SpriteTest dot = new SpriteTest();
-                       dot.main();
+                       SpriteTest line = new SpriteTest();
+                       line.main();
                        break;
                     }
+                case 4:
+                    {
+                       MoveDot dot = new MoveDot();
+                       dot.main();
+                       break;
+                    }   
                }
             System.out.print("Would you like to play again?\n");
-            System.out.print("1. Yes\n");
-            System.out.print("2. No\n");
-            repeat = InputStream.readInt();
-         }while(repeat == 1);
+            System.out.print("Yes/No\n");
+            repeat = InputStream.readLine();
+         }while("yes".equals(repeat));
     }
 }
 //this is a comment
