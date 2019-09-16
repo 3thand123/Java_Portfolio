@@ -17,19 +17,22 @@ public class Score
     /**
      * Constructor for objects of class Score
      */
-    public Score(SketchPad canvas, int consumed, boolean eaten)
+    public Score(SketchPad canvas)
     {
         // initialise instance variables
         writer = new DrawingTool(canvas);
     }
 
    
-    public void DisplayScore()
+    public void DisplayScore(boolean eaten, int consumed)
     {
-        writer.up();
-        writer.move(50,50);
-        writer.down();
-        writer.drawString("Score:");
+        if (consumed < 1)
+        {
+            writer.up();
+            writer.move(50,50);
+            writer.down();
+            writer.drawString("Score:");
+        }
         if (eaten == true && consumed>1)
         {
             writer.up();

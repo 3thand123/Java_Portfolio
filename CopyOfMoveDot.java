@@ -9,23 +9,21 @@ import java.util.Random;
  * @author (Ethan Davies)
  * @version (V.1)
  */
+
 public class CopyOfMoveDot
 {
     // instance variables - replace the example below with your own
-    //int x, y;
-    //int x_coordinate, y_coordinate;
+    int x, y;
+    int x_coordinate, y_coordinate;
     int consumed;
     SketchPad canvas;
-    //DrawingTool pencil, apple, grid, writer;
-    //Random rand;
-    //String input = "0";
-    //ConsoleIO typer;
+    DrawingTool pencil, apple, grid, writer;
+    Random rand;
+    String input = "0";
+    ConsoleIO typer;
     Color color;
     int radius = 10;
-    //boolean down, up, left, right, eaten = true;
-    /**
-     * Constructor for objects of class SpriteTest
-     */
+    boolean down, up, left, right, eaten = true;
     public CopyOfMoveDot()
     {
         // initialise instance variables
@@ -117,7 +115,7 @@ public class CopyOfMoveDot
                             }
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5);
+                     pencil.forward(5 * consumed);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -154,7 +152,7 @@ public class CopyOfMoveDot
                                 } 
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5);
+                     pencil.forward(5 * consumed);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -191,7 +189,7 @@ public class CopyOfMoveDot
                                 }  
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5);
+                     pencil.forward(5 * consumed);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -228,7 +226,7 @@ public class CopyOfMoveDot
                                 }
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5);
+                     pencil.forward(5 * consumed);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);

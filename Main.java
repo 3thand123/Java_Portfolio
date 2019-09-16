@@ -21,7 +21,7 @@ public class Main
             System.out.print("2.Draw Shape\n");
             System.out.print("3.Etch a Sketch\n");
             System.out.print("4.Snake Game\n");
-            choice = InputStream.readLine();
+            choice = InputStream.readInt();
             switch(choice)
             {
                 case 1:
@@ -44,7 +44,7 @@ public class Main
                     }
                 case 4:
                     {
-                       MoveDot dot = new MoveDot();
+                       CopyOfMoveDot dot = new CopyOfMoveDot();
                        dot.main();
                        break;
                     }   

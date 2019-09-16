@@ -16,6 +16,8 @@ public class Apple
     boolean eaten;
     Random rand;
     Color color;
+    int consumed;
+    int x,y;
 
     /**
      * Constructor for objects of class Apple
@@ -23,18 +25,34 @@ public class Apple
     public Apple(SketchPad canvas)
     {
         // initialise instance variables
-        fruit = new DrawintTool(canvas);
+        fruit = new DrawingTool(canvas);
+        eaten = true;
+        consumed = 0;
+        x= 0;
+        y = 0;
+        rand = new Random();
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public void doJob(int snakeX, int snakeY)
     {
-        // put your code here
-        return x + y;
+        if (eaten == true)
+            {
+                fruit.down();
+                fruit.setColor(Color.WHITE);
+                fruit.drawCircle(3);
+                fruit.setColor(Color.RED);
+                x = rand.nextInt(10) * 5 - 50;
+                y = rand.nextInt(10) * 5 - 50;
+                fruit.up();
+                fruit.move(x,y);
+                fruit.down();
+                fruit.drawCircle(3);
+                consumed++;
+                eaten = false;
+            }
+        if (snakeX == x && snakeY == y)
+            {
+                eaten = true;
+            }
     }
 }

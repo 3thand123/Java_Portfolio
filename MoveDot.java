@@ -18,6 +18,8 @@ public class MoveDot
     Snake slitherman;
     Apple fruitdude;
     Score numbers;
+    String input;
+    ConsoleIO typer;
     //DrawingTool pencil, apple, grid, writer;
     //Random rand;
     //Color color;
@@ -29,9 +31,10 @@ public class MoveDot
     {
         // initialise instance variables
         canvas = new SketchPad(50,50);
-        slitherman = new Snake(canvas, apple.consumed);
-        fruitdude = new Apple(canvas, );
-        numbers = new Score(canvas,apple.consumed, apple.eaten);
+        slitherman = new Snake(canvas);
+        fruitdude = new Apple(canvas);
+        numbers = new Score(canvas);
+        typer = new ConsoleIO();
         //pencil = new DrawingTool(canvas);
         //apple = new DrawingTool(canvas);
         //grid = new DrawingTool(canvas);
@@ -48,50 +51,12 @@ public class MoveDot
     
     public void main()
     {
-        writer.up();
-        writer.move(50,50);
-        writer.down();
-        writer.drawString("Score:");
         while(!"stop".equals(input))
         {
-            if (eaten == true)
-            {
-                apple.down();
-                apple.setColor(Color.WHITE);
-                apple.drawCircle(3);
-                apple.setColor(Color.RED);
-                x = rand.nextInt(10) * 5 - 50;
-                y = rand.nextInt(10) * 5 - 50;
-                apple.up();
-                apple.move(x,y);
-                apple.down();
-                apple.drawCircle(3);
-                consumed++;
-                if (consumed > 1)
-                {
-                    writer.up();
-                    writer.home();
-                    writer.turnRight(90);
-                    writer.forward(50 + consumed*4);
-                    writer.turnLeft(90);
-                    writer.forward(30);
-                    writer.turnLeft(90);
-                    writer.up();
-                    //writer.turnRight(90);
-                    writer.forward(10);
-                    writer.down();
-                    writer.turnRight(90);
-                    writer.forward(10);
-                    writer.up();
-                    writer.backward(10);
-                    writer.turnLeft(180);
-                }   
-                eaten = false;
-            }
-            if (x_coordinate == x && y_coordinate == y)
-            {
-                eaten = true;
-            }
+            input = typer.readLine();
+            numbers.DisplayScore(fruitdude.eaten, fruitdude.consumed);
+            slitherman.move(input, fruitdude.consumed);
+            fruitdude.doJob(slitherman.snakeX, slitherman.snakeY);
         }
     }
 }
