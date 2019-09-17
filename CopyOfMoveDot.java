@@ -23,7 +23,7 @@ public class CopyOfMoveDot
     ConsoleIO typer;
     Color color;
     int radius = 10;
-    boolean down, up, left, right, eaten = true;
+    boolean down = false, up = false, left = false, right = false, eaten = true;
     public CopyOfMoveDot()
     {
         // initialise instance variables
@@ -93,11 +93,6 @@ public class CopyOfMoveDot
             switch (input)
             {
                 case "5":
-                    if(down == true){
-                        pencil.turnLeft(180);
-                        //pencil.forward(5 * consumed);
-                    }
-                    else
                         if (left == true){
                             pencil.setColor(Color.WHITE);
                             pencil.backward(5*consumed);
@@ -113,9 +108,10 @@ public class CopyOfMoveDot
                                 pencil.setColor(Color.BLACK);
                                 pencil.turnLeft(90);
                             }
+                     if (down != true){
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5 * consumed);
+                     pencil.forward(5);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -123,12 +119,12 @@ public class CopyOfMoveDot
                      down = false;
                      right = false;
                      left = false;
-                     y_coordinate += 5;
+                     y_coordinate += 5;}
                      break;
                 case "2":
                     if(up == true){
                       pencil.turnLeft(180);
-                      //pencil.forward(5 * consumed);
+                      
                     }
                     else
                         if (left == true){
@@ -146,13 +142,10 @@ public class CopyOfMoveDot
                                pencil.setColor(Color.BLACK);
                                pencil.turnRight(90);
                             }
-                            else
-                                if (down == false){
-                                    pencil.turnRight(180);
-                                } 
+                     if(up != true){       
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5 * consumed);
+                     pencil.forward(5);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -160,13 +153,13 @@ public class CopyOfMoveDot
                      up = false;
                      right = false;
                      left = false;
-                     y_coordinate -= 5;
+                     y_coordinate -= 5;}
                      break;
                 case "1":
                     if(up == true){
                        pencil.setColor(Color.WHITE);
                        pencil.backward(5*consumed);
-                       pencil.forward(5*consumed);
+                       pencil.forward(5);
                        pencil.setColor(Color.BLACK);
                        pencil.turnLeft(90);
                     }
@@ -179,17 +172,13 @@ public class CopyOfMoveDot
                             pencil.turnRight(90);
                         }
                         else
-                            if(right == true) {
-                               pencil.turnRight(180);
-                               //pencil.forward(5 * consumed);
-                            }
-                            else
                                 if (left == false){
                                     pencil.turnLeft(90);
-                                }  
+                                } 
+                     if (right != true){
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5 * consumed);
+                     pencil.forward(5);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -197,7 +186,7 @@ public class CopyOfMoveDot
                      down = false;
                      right = false;
                      up = false;
-                     x_coordinate -= 5;
+                     x_coordinate -= 5;}
                      break;
                 case "3":
                     if(up == true) {
@@ -208,11 +197,8 @@ public class CopyOfMoveDot
                         pencil.turnRight(90);
                     }
                     else
-                        if (left == true) {
-                            pencil.turnLeft(180);
-                            //pencil.forward(5 * consumed);
-                        }
-                        else
+                        
+                     
                             if(down == true) {
                                pencil.setColor(Color.WHITE);
                                pencil.backward(5*consumed);
@@ -224,9 +210,10 @@ public class CopyOfMoveDot
                                 if (right == false){
                                     pencil.turnRight(90);
                                 }
+                    if (left != true){            
                      pencil.backward(5 * consumed);
                      pencil.setColor(Color.WHITE);
-                     pencil.forward(5 * consumed);
+                     pencil.forward(5);
                      pencil.setColor(Color.BLACK);
                      pencil.forward(5 * consumed - 5);
                      pencil.forward(5);
@@ -234,7 +221,7 @@ public class CopyOfMoveDot
                      down = false;
                      up = false;
                      left = false;
-                     x_coordinate += 5;
+                     x_coordinate += 5;}
                      break;
                 case "print":
                      System.out.print(x_coordinate + "," + y_coordinate);

@@ -45,6 +45,7 @@ public class Main
                 case 4:
                     {
                        CopyOfMoveDot dot = new CopyOfMoveDot();
+                       //MoveDot dot = new MoveDot();
                        dot.main();
                        break;
                     }   
