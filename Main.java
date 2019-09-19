@@ -21,6 +21,7 @@ public class Main
             System.out.print("2.Draw Shape\n");
             System.out.print("3.Etch a Sketch\n");
             System.out.print("4.Snake Game\n");
+            System.out.print("5.Bouncing Ball\n");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -38,17 +39,23 @@ public class Main
                     }   
                 case 3:
                     {
-                       SpriteTest line = new SpriteTest();
+                       Draw line = new Draw();
                        line.main();
                        break;
                     }
                 case 4:
                     {
-                       CopyOfMoveDot dot = new CopyOfMoveDot();
-                       //MoveDot dot = new MoveDot();
+                       //CopyOfMoveDot dot = new CopyOfMoveDot();
+                       MoveDot dot = new MoveDot();
                        dot.main();
                        break;
                     }   
+                case 5:
+                    {
+                        Animation ball = new Animation();
+                        ball.main();
+                        break;
+                    }
                }
             System.out.print("Would you like to play again?\n");
             System.out.print("Yes/No\n");

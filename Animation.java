@@ -11,27 +11,32 @@ import java.awt.geom.Point2D;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class SpriteTest
+public class Animation
 {
     // instance variables - replace the example below with your own
     int a;
     double t;
     SketchPad canvas;
-    DrawingTool pencil[];
-    DrawingTool eraser;
+    DrawingTool pencil, eraser, character;
+    Snake hero;
     Point2D position;
     double pX, pY, eX, eY;
     Random rand;
+    ConsoleIO typer;
+    
     /**
      * Constructor for objects of class Animation
      */
-    public SpriteTest()
+    public Animation()
     {
         // initialise instance variables
         canvas = new SketchPad(50,50);
-        pencil = new DrawingTool[10];
+        pencil = new DrawingTool(canvas);
         eraser = new DrawingTool(canvas);
+        character = new DrawingTool(canvas);
+        hero = new Snake(canvas);
         rand = new Random();
+        typer = new ConsoleIO();
         t = rand.nextInt(359) + 1;
         pX = 0.0;
         pY = 0.0;
@@ -45,9 +50,9 @@ public class SpriteTest
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void animate()
+    public void main()
     {
-        pencil[0].up();
+        pencil.up();
         pencil.move(58.5,58.5);
         pencil.down();
         pencil.move(58.5,-58.5);
@@ -65,54 +70,75 @@ public class SpriteTest
         eraser.backward(1);
         while(1==1)
         {
-            pencil.setColor(Color.BLACK);
-            pencil.forward(1);
-            pencil.drawCircle(5);
-            eraser.setColor(Color.WHITE);
-            eraser.forward(1);
-            eraser.drawCircle(5);
-            position = pencil.getPosition();
-            pX = position.getX();
-            pY = position.getY();
-            position = eraser.getPosition();
-            eX = position.getX();
-            eY = position.getY();
-            if(pX>=50)
+            //moveVillain(pencil, eraser);
+            //check(pencil, eraser);
+            moveCharacter(character);
+            
+        }
+        
+        
+    }
+    
+    public void moveCharacter (DrawingTool character)
+    {
+        String input;
+        input = typer.readLine();
+        hero.move(input, 0);
+    }
+    
+    public void moveVillain (DrawingTool pencil, DrawingTool eraser)
+    {
+        pencil.setColor(Color.BLACK);
+        pencil.forward(1);
+        pencil.drawCircle(5);
+        eraser.setColor(Color.WHITE);
+        eraser.forward(1);
+        eraser.drawCircle(5);
+        position = pencil.getPosition();
+        pX = position.getX();
+        pY = position.getY();
+        position = eraser.getPosition();
+        eX = position.getX();
+        eY = position.getY();
+    } 
+    
+    public void check(DrawingTool pencil, DrawingTool eraser)
+    {
+        if(pX>=50)
+            {
+               pencil.turnLeft(t);
+            }
+        if(pY>=50)
             {
                 pencil.turnLeft(t);
             }
-            if(pY>=50)
-            {
-                pencil.turnLeft(t);
-            }
-            if(pX<=-50)
+        if(pX<=-50)
             {
                 pencil.turnRight(t);
             }
-            if(pY<=-50)
+        if(pY<=-50)
             {
                 pencil.turnRight(t);
             }
             
-             if(eX>=50)
+         if(eX>=50)
             {
                 eraser.turnLeft(t);
             }
-            if(eY>=50)
+        if(eY>=50)
             {
                 eraser.turnLeft(t);
             }
-            if(eX<=-50)
+        if(eX<=-50)
             {
                 eraser.turnRight(t);
             }
-            if(eY<=-50)
+        if(eY<=-50)
             {
                 eraser.turnRight(t);
             }
-               
-        }
     }
 }
+
 
 
