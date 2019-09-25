@@ -53,7 +53,7 @@ public class Main
                 case 5:
                     {
                         Animation ball = new Animation();
-                        ball.main();
+                        ball.animate();
                         break;
                     }
                }

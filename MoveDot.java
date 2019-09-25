@@ -3,6 +3,7 @@ import chn.util.*;
 import apcslib.*;
 import java.awt.Color;
 import java.util.Random;
+
 /**
  * Write a description of class SpriteTest here.
  *
@@ -35,6 +36,7 @@ public class MoveDot
         fruitdude = new Apple(canvas);
         numbers = new Score(canvas);
         typer = new ConsoleIO();
+        
         //pencil = new DrawingTool(canvas);
         //apple = new DrawingTool(canvas);
         //grid = new DrawingTool(canvas);
@@ -51,12 +53,16 @@ public class MoveDot
     
     public void main()
     {
+        int x = 1;
+        //ear.main(slitherman);
         while(!"stop".equals(input))
         {
             input = typer.readLine();
             numbers.DisplayScore(fruitdude.eaten, fruitdude.consumed);
             slitherman.move(input, fruitdude.consumed);
             fruitdude.doJob(slitherman.snakeX, slitherman.snakeY);
+            x++;
         }
     }
 }
+
