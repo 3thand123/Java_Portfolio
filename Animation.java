@@ -14,7 +14,6 @@ import java.awt.geom.Point2D;
 public class Animation
 {
     // instance variables - replace the example below with your own
-    int a;
     double t;
     SketchPad canvas;
     DrawingTool pencil;
@@ -33,7 +32,6 @@ public class Animation
         t = rand.nextInt(359) + 1;
         pX = 0.0;
         pY = 0.0;
-
         pencil.setColor(Color.RED);
     }
 

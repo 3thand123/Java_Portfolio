@@ -22,6 +22,7 @@ public class Main
             System.out.print("3.Etch a Sketch\n");
             System.out.print("4.Snake Game\n");
             System.out.print("5.Bouncing Ball\n");
+            System.out.print("6.Irregular Polygon Maker\n");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -54,6 +55,12 @@ public class Main
                     {
                         Animation ball = new Animation();
                         ball.animate();
+                        break;
+                    }
+                case 6:
+                    {
+                        IrregularPolygon shapeman = new IrregularPolygon();
+                        shapeman.shapemaker();
                         break;
                     }
                }

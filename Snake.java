@@ -17,7 +17,6 @@ public class Snake
     int snakeX, snakeY;
     //String input;
     ConsoleIO typer;
-    int injested;
     /**
      * Constructor for objects of class Snake
      */
@@ -32,7 +31,6 @@ public class Snake
         snakeX = 0; 
         snakeY = 0;
         typer = new ConsoleIO();
-        injested = 0;
     }
 
     /**
@@ -46,100 +44,26 @@ public class Snake
         
             switch (input)
             {
-                /*case "5":
-                    moveUp();
+                case "5":
+                    moveUp(injested);
                     break;
                 case "2":
-                    moveUp();
+                    moveDown(injested);
                     break;
                 case "1":
-                    moveUp();
+                    moveLeft(injested);
                     break;
                 case "3":
-                    moveUp();
+                    moveRight(injested);
                     break;
                 default:
-                    break;*/
-                    
-                
-                    if(up == true){
-                       snakeman.setColor(Color.WHITE);
-                       snakeman.backward(5*injested);
-                       snakeman.forward(5);
-                       snakeman.setColor(Color.BLACK);
-                       snakeman.turnLeft(90);
-                    }
-                    else
-                        if (down == true) {
-                            snakeman.setColor(Color.WHITE);
-                            snakeman.backward(5*injested);
-                            snakeman.forward(5*injested);
-                            snakeman.setColor(Color.BLACK);
-                            snakeman.turnRight(90);
-                        }
-                        else
-                                if (left == false){
-                                    snakeman.turnLeft(90);
-                                } 
-                    if (right != true)
-                    {
-                        snakeman.backward(5 * injested);
-                        snakeman.setColor(Color.WHITE);
-                        snakeman.forward(5);
-                        snakeman.setColor(Color.BLACK);
-                        snakeman.forward(5 * injested - 5);
-                        snakeman.forward(5);
-                        left = true;
-                        down = false;
-                        right = false;
-                        up = false;
-                        snakeX -= 5;
-                    }
-                     break;
-                case "3":
-                    if(up == true) {
-                        snakeman.setColor(Color.WHITE);
-                        snakeman.backward(5*injested);
-                        snakeman.forward(5*injested);
-                        snakeman.setColor(Color.BLACK);
-                        snakeman.turnRight(90);
-                    }
-                    else
-                        
-                     
-                            if(down == true) {
-                               snakeman.setColor(Color.WHITE);
-                               snakeman.backward(5*injested);
-                               snakeman.forward(5*injested);
-                               snakeman.setColor(Color.BLACK);
-                               snakeman.turnLeft(90);
-                            }
-                            else
-                                if (right == false){
-                                    snakeman.turnRight(90);
-                                }
-                    if (left != true)
-                    {            
-                        snakeman.backward(5 * injested);
-                        snakeman.setColor(Color.WHITE);
-                        snakeman.forward(5);
-                        snakeman.setColor(Color.BLACK);
-                        snakeman.forward(5 * injested - 5);
-                        snakeman.forward(5);
-                        right = true;
-                        down = false;
-                        up = false;
-                        left = false;
-                        snakeX += 5;
-                    }
-                     break;
-                default:
                     break;
+
             } 
         
     }
     
-    public void moveUp()
+    public void moveUp(int injested)
     {
         if (left == true){
                            snakeman.setColor(Color.WHITE);
@@ -173,7 +97,7 @@ public class Snake
                     
     }
     
-    public void moveDown()
+    public void moveDown(int injested)
     {
         if(up == true){
                       snakeman.turnLeft(180);
@@ -211,7 +135,7 @@ public class Snake
                     }
     }
     
-    public void moveLeft()
+    public void moveLeft(int injested)
     {
         if(up == true){
                        snakeman.setColor(Color.WHITE);
@@ -245,6 +169,45 @@ public class Snake
                         right = false;
                         up = false;
                         snakeX -= 5;
+                    }
+    }
+    
+    public void moveRight(int injested)
+    {
+        if(up == true) {
+                        snakeman.setColor(Color.WHITE);
+                        snakeman.backward(5*injested);
+                        snakeman.forward(5*injested);
+                        snakeman.setColor(Color.BLACK);
+                        snakeman.turnRight(90);
+                    }
+                    else
+                        
+                     
+                            if(down == true) {
+                               snakeman.setColor(Color.WHITE);
+                               snakeman.backward(5*injested);
+                               snakeman.forward(5*injested);
+                               snakeman.setColor(Color.BLACK);
+                               snakeman.turnLeft(90);
+                            }
+                            else
+                                if (right == false){
+                                    snakeman.turnRight(90);
+                                }
+                    if (left != true)
+                    {            
+                        snakeman.backward(5 * injested);
+                        snakeman.setColor(Color.WHITE);
+                        snakeman.forward(5);
+                        snakeman.setColor(Color.BLACK);
+                        snakeman.forward(5 * injested - 5);
+                        snakeman.forward(5);
+                        right = true;
+                        down = false;
+                        up = false;
+                        left = false;
+                        snakeX += 5;
                     }
     }
 }

@@ -27,7 +27,7 @@ public class Apple
         // initialise instance variables
         fruit = new DrawingTool(canvas);
         eaten = true;
-        consumed = 0;
+        consumed = 1;
         x= 0;
         y = 0;
         rand = new Random();
