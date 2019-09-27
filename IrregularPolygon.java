@@ -55,24 +55,44 @@ public class IrregularPolygon
         int OGpointX, OGpointY;
         int X = 0, Y = 0; 
         double x_coord, y_coord;
+        double BottomPoint;
         System.out.print("How many sides would you like your shape to have?\n");
         points = inputman.readInt() - 1;
-        
-        
-        
-        OGpointX = rand.nextInt(250) - 250;
-        OGpointY = rand.nextInt(250) - 250;
+
+        OGpointX = 0 - rand.nextInt(250);
+        OGpointY = 0 + rand.nextInt(250);
         pencil.up();
         pencil.move(OGpointX, OGpointY);
         pencil.down();
-        for (i = 0; i <= points/2 - 1; i++)
+        for (i = 0; i <= points/3 - 1; i++)
         {
             position = pencil.getPosition();
             x_coord = position.getX();
             y_coord = position.getY();
-            X = rand.nextInt(Math.abs((int)x_coord)) + ((int)x_coord - 250);
+            X = (int)x_coord + rand.nextInt(50);
             //trying to generate a number that will ensure the next point is further to the right of the last one
-            Y = rand.nextInt((int)y_coord) - ((int)y_coord + 250);
+            Y = (int)y_coord - rand.nextInt(50);
+            pencil.move(X,Y);
+        }
+        BottomPoint = position.getY();
+        for (i = 0; i <= points/3; i++)
+        {
+            position = pencil.getPosition();
+            x_coord = position.getX();
+            y_coord = position.getY();
+            X = (int)x_coord + rand.nextInt(50);
+            //trying to generate a number that will ensure the next point is further to the right of the last one
+            Y = (int)y_coord + rand.nextInt(50);
+            pencil.move(X,Y);
+        }
+        for (i = 0; i <= points/3; i++)
+        {
+            position = pencil.getPosition();
+            x_coord = position.getX();
+            y_coord = position.getY();
+            X = (int)x_coord - rand.nextInt((int)x_coord - OGpointX);
+            //trying to generate a number that will ensure the next point is further to the right of the last one
+            Y = (int)y_coord + rand.nextInt(25);
             pencil.move(X,Y);
         }
         pencil.move(OGpointX, OGpointY);
