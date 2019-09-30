@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.util.Random;
 import java.awt.geom.Point2D; 
 import java.lang.Math;
+import java.util.Random;
+import java.util.stream.IntStream; 
 /**
  * Write a description of class Irregular_Polygon here.
  *
@@ -21,7 +23,9 @@ public class IrregularPolygon
     Point2D position;
     double pX, pY;
     Random rand;
-
+    
+    IntStream k;
+    
     ConsoleIO inputman;
     
     /**
@@ -37,9 +41,9 @@ public class IrregularPolygon
         t = rand.nextInt(359) + 1;
         pX = 0.0;
         pY = 0.0;
-
         pencil.setColor(Color.RED);
     }
+    
 
     /**
      * An example of a method - replace this comment with your own
@@ -54,47 +58,132 @@ public class IrregularPolygon
         int i;
         int OGpointX, OGpointY;
         int X = 0, Y = 0; 
-        double x_coord, y_coord;
-        double BottomPoint;
+        double x_coord = 0, y_coord = 0;
+        double currentPoint;
+        double highestPointY, lowestPointY, highestPointX, lowestPointX;
+        int angle, distance;
+        double direct;
+        
         System.out.print("How many sides would you like your shape to have?\n");
-        points = inputman.readInt() - 1;
-
-        OGpointX = 0 - rand.nextInt(250);
-        OGpointY = 0 + rand.nextInt(250);
+        points = inputman.readInt();
+        
+        OGpointX = -250;
+        OGpointY = rand.nextInt(250) - rand.nextInt(250);
+        
+        
         pencil.up();
+        
         pencil.move(OGpointX, OGpointY);
+        position = pencil.getPosition();
+        
+        highestPointY = position.getY();
+        highestPointX = position.getX();
+        
+        lowestPointY = position.getY();
+        lowestPointX = position.getX();
+        
         pencil.down();
-        for (i = 0; i <= points/3 - 1; i++)
+        
+        //Making sure the pencil is pointing up to start drawing
+        direct = pencil.getDirection();
+        pencil.turnRight(direct);
+        pencil.turnLeft(90);
+       
+        //make all the sides except two because the last two sides
+        //the last two sides require more specific code
+        for (i = 1; i<=points-2; i++)
         {
-            position = pencil.getPosition();
-            x_coord = position.getX();
-            y_coord = position.getY();
-            X = (int)x_coord + rand.nextInt(50);
-            //trying to generate a number that will ensure the next point is further to the right of the last one
-            Y = (int)y_coord - rand.nextInt(50);
-            pencil.move(X,Y);
+           //makes random side lengths and directions
+           //always moving right tho when drawing
+           angle = rand.nextInt(180) + 1;
+           pencil.turnRight(angle); 
+           distance = rand.nextInt(125) + 1;
+           pencil.forward(distance);
+           //orienting pencil up
+           pencil.turnLeft(angle);
+           
+           //keeping track of the highest or lowest points of the shape
+           position = pencil.getPosition();
+           currentPoint = position.getY();
+           
+           if(currentPoint > highestPointY)
+           {
+                highestPointY = currentPoint;
+                highestPointX = position.getX();
+           }
+           if(currentPoint < lowestPointY)
+           {
+                lowestPointY = currentPoint;
+                lowestPointX = position.getX();
+            }
+        }   
+        
+        //if the original point we need to connect back to is below the y-axis
+        if (OGpointY < 0)
+        {
+            //ensuring the next vertex is above the highest point of the shape so far
+            //this creates a clear path from this poin to the start of the shape so no lines cross
+            y_coord = rand.nextDouble() + rand.nextInt(Math.abs((int)lowestPointY)) - 250;
+            x_coord = rand.nextDouble() + rand.nextInt(((int)x_coord-(int)lowestPointX)+1) + lowestPointX;
+            pencil.move(x_coord, y_coord);
         }
-        BottomPoint = position.getY();
-        for (i = 0; i <= points/3; i++)
+        //if the original point we need to connect back to is above the y-axis
+        if (OGpointY >= 0)
         {
-            position = pencil.getPosition();
-            x_coord = position.getX();
-            y_coord = position.getY();
-            X = (int)x_coord + rand.nextInt(50);
-            //trying to generate a number that will ensure the next point is further to the right of the last one
-            Y = (int)y_coord + rand.nextInt(50);
-            pencil.move(X,Y);
+            //making sure the random number generater has positive parameters
+            if (highestPointY > 250)
+            {
+                y_coord = rand.nextDouble() + rand.nextInt((int)highestPointY - 250) + highestPointY;
+            }   
+            else 
+            {
+                y_coord = rand.nextDouble() + rand.nextInt(250 - (int)highestPointY) + highestPointY;
+            }
+            x_coord = rand.nextDouble() + rand.nextInt(((int)x_coord-(int)highestPointX)+1) + highestPointX;
+            pencil.move(x_coord, y_coord);
         }
-        for (i = 0; i <= points/3; i++)
+        //returning to start
+        pencil.move(OGpointX, OGpointY);
+        
+        
+        //Code below was another wat of doing this lab.
+        //However, it's shapes were more predictable so I opted for the above code
+        /*
+        for(i = 1; i<=points-1; i++)
         {
-            position = pencil.getPosition();
-            x_coord = position.getX();
-            y_coord = position.getY();
-            X = (int)x_coord - rand.nextInt((int)x_coord - OGpointX);
-            //trying to generate a number that will ensure the next point is further to the right of the last one
-            Y = (int)y_coord + rand.nextInt(25);
-            pencil.move(X,Y);
+           x_coord = rand.nextDouble() + rand.nextInt(((250/(points+1)) - (int)x_coord) + 1) + x_coord;
+           y_coord = rand.nextDouble() + rand.nextInt(249) - rand.nextInt(250);
+           pencil.move(x_coord, y_coord);
+           
+           position = pencil.getPosition();
+           currentPoint = position.getY();
+           
+           if(currentPoint > highestPointY)
+           {
+                highestPointY = currentPoint;
+                highestPointX = position.getX();
+           }
+           if(currentPoint < lowestPointY)
+           {
+                lowestPointY = currentPoint;
+                lowestPointX = position.getX();
+            }
+        }   
+        System.out.println(x_coord);
+        pencil.drawCircle(5);
+        if (OGpointY < 0)
+        {
+            y_coord = rand.nextDouble() + rand.nextInt(Math.abs((int)lowestPointY)) - 250;
+            x_coord = rand.nextDouble() + rand.nextInt(((int)x_coord-(int)lowestPointX)+1) + lowestPointX;
+            pencil.move(x_coord, y_coord);
+        }
+        if (OGpointY >= 0)
+        {
+            y_coord = rand.nextDouble() + rand.nextInt(250 - (int)highestPointY) + highestPointY;
+            x_coord = rand.nextDouble() + rand.nextInt(((int)x_coord-(int)highestPointX)+1) + highestPointX;
+            pencil.move(x_coord, y_coord);
         }
         pencil.move(OGpointX, OGpointY);
-    }
+        */
+   }
 }

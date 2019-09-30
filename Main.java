@@ -16,6 +16,7 @@ public class Main
         ConsoleIO InputStream = new ConsoleIO();
         do
         {
+
             System.out.print("Please enter what program you want to run:\n");
             System.out.print("1.Monkeys\n");
             System.out.print("2.Draw Shape\n");
