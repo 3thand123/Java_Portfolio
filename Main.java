@@ -24,6 +24,7 @@ public class Main
             System.out.print("4.Snake Game\n");
             System.out.print("5.Bouncing Ball\n");
             System.out.print("6.Irregular Polygon Maker\n");
+            System.out.print("7.Shorthand\n");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -62,6 +63,12 @@ public class Main
                     {
                         IrregularPolygon shapeman = new IrregularPolygon();
                         shapeman.shapemaker();
+                        break;
+                    }
+                case 7:
+                    {
+                        Shorthand MigitDigits = new Shorthand();
+                        MigitDigits.translate();
                         break;
                     }
                }
