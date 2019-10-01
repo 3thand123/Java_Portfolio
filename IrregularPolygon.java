@@ -4,9 +4,7 @@ import apcslib.*;
 import java.awt.Color;
 import java.util.Random;
 import java.awt.geom.Point2D; 
-import java.lang.Math;
-import java.util.Random;
-import java.util.stream.IntStream; 
+import java.lang.Math; 
 /**
  * Write a description of class Irregular_Polygon here.
  *
@@ -24,7 +22,6 @@ public class IrregularPolygon
     double pX, pY;
     Random rand;
     
-    IntStream k;
     
     ConsoleIO inputman;
     

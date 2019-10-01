@@ -71,47 +71,14 @@ public class Shorthand
             {
                 switch(test.charAt(x))
                 {
-                    case 'a':
+                    case 'a':case 'e':case 'i':case 'o':case 'u':
                         {
-                            test = test.replace('a', ' ');
+                            test = test.replace(test.charAt(x), ' ');
                             test = test.replaceAll(" ", "");
                             x--;
                             parts[i] = test;
                             break;
                         }
-                    case 'e':
-                        {
-                            test = test.replace('e', ' ');
-                            test = test.replaceAll(" ", "");
-                            x--;
-                            parts[i] = test;
-                            break;
-                        }
-                    case 'i':
-                        {
-                            test = test.replace('i', ' ');
-                            test = test.replaceAll(" ", "");
-                            x--;
-                            parts[i] = test;
-                            break;
-                        }
-                    case 'o':
-                        {
-                            test = test.replace('o', ' ');
-                            test = test.replaceAll(" ", "");
-                            x--;
-                            parts[i] = test;
-                            break;
-                        }
-                    case 'u':
-                        {
-                            test = test.replace('u', ' ');
-                            test = test.replaceAll(" ", "");
-                            x--;
-                            parts[i] = test;
-                            break;
-                        }
-
                 }
             }
             System.out.print(parts[i] + " ");

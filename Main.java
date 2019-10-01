@@ -25,6 +25,7 @@ public class Main
             System.out.print("5.Bouncing Ball\n");
             System.out.print("6.Irregular Polygon Maker\n");
             System.out.print("7.Shorthand\n");
+            System.out.print("8.Permutation");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -69,6 +70,12 @@ public class Main
                     {
                         Shorthand MigitDigits = new Shorthand();
                         MigitDigits.translate();
+                        break;
+                    }
+                case 8:
+                    {
+                        Permutation perm = new Permutation();
+                        perm.numbers();
                         break;
                     }
                }
