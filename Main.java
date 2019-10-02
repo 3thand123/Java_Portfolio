@@ -25,7 +25,8 @@ public class Main
             System.out.print("5.Bouncing Ball\n");
             System.out.print("6.Irregular Polygon Maker\n");
             System.out.print("7.Shorthand\n");
-            System.out.print("8.Permutation");
+            System.out.print("8.Permutation\n");
+            System.out.print("9.Palindrome\n");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -76,6 +77,12 @@ public class Main
                     {
                         Permutation perm = new Permutation();
                         perm.numbers();
+                        break;
+                    }
+                case 9:
+                    {
+                        Palindrome pal = new Palindrome();
+                        pal.friend();
                         break;
                     }
                }
