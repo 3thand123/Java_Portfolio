@@ -27,6 +27,7 @@ public class Main
             System.out.print("7.Shorthand\n");
             System.out.print("8.Permutation\n");
             System.out.print("9.Palindrome\n");
+            System.out.print("10.Pig Latin\n");
             choice = InputStream.readInt();
             switch(choice)
             {
@@ -83,6 +84,12 @@ public class Main
                     {
                         Palindrome pal = new Palindrome();
                         pal.friend();
+                        break;
+                    }
+                case 10:
+                    {
+                        PigLatin oinker = new PigLatin();
+                        oinker.oink();
                         break;
                     }
                }
