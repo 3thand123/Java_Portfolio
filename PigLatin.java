@@ -34,11 +34,13 @@ public class PigLatin
     public void oink()
     {
         // put your code here
-        int i,j;
+        int i,j, k;
         int vowels = 0;
         
         String FirstVowel = "";
         char firstVowel;
+        
+        char letters[];
         
         System.out.print("Please enter your word:\n");
         input = hal.readLine();
@@ -67,13 +69,21 @@ public class PigLatin
                     while(vowels == 0)
                     {
                         vowels += vowel(parts[i].charAt(j));
-                        j++;
+                        if(vowels==0)
+                            j++;
                     }
                     firstVowel = parts[i].charAt(j);
-                    FirstVowel = FirstVowel.valueOf(firstVowel);
-                    pieces = parts[i].split(FirstVowel);
-                    System.out.print(pieces[1] + pieces[0] + "ay");
                     
+                    letters = parts[i].toCharArray();
+                    
+                    //FirstVowel = FirstVowel.valueOf(firstVowel);
+                    //pieces = parts[i].split(FirstVowel);
+                    
+                    for(k = j; k<parts[i].length(); k++)
+                         System.out.print(letters[k]);
+                    for(k = 0; k < j; k++)  
+                        System.out.print(letters[k]);
+                    System.out.print("ay");
                 }
             System.out.print(" ");
         }
