@@ -1,6 +1,7 @@
 import java.util.*;
 import chn.util.*;
 import java.lang.String;
+import java.lang.*;
 /**
  * Write a description of class PigLatin here.
  *
@@ -40,7 +41,10 @@ public class PigLatin
         String FirstVowel = "";
         char firstVowel;
         
+        
         char letters[];
+        
+        boolean isChar;
         
         System.out.print("Please enter your word:\n");
         input = hal.readLine();
@@ -49,23 +53,26 @@ public class PigLatin
         
         for(i = 0; i < parts.length; i++)
         {
+            vowels = 0;
+            if(!ch.isLetter('a'))
+                break;
             for(j = 0; j < parts[i].length(); j++)
             {
                 vowels += vowel(parts[i].charAt(j));
             }
             if(vowels == 0)
             {
-                System.out.print(input + "ay");
+                System.out.print(parts[i] + "ay");
             }
             else 
                 if(vowels >= 1 && vowel(parts[i].charAt(0)) == 1)
                 {
-                    System.out.print(input + "yay");
+                    System.out.print(parts[i] + "yay");
                 }
                 else
                 {
-                    j = 0;
                     vowels = 0;
+                    j = 0;
                     while(vowels == 0)
                     {
                         vowels += vowel(parts[i].charAt(j));
@@ -74,10 +81,15 @@ public class PigLatin
                     }
                     firstVowel = parts[i].charAt(j);
                     
-                    letters = parts[i].toCharArray();
+                    int charType;
                     
-                    //FirstVowel = FirstVowel.valueOf(firstVowel);
-                    //pieces = parts[i].split(FirstVowel);
+                    charType = Character.getType(parts[i].charAt(0));
+                                   
+                    parts[i] = parts[i].toLowerCase();
+                    
+                    letters = parts[i].toCharArray();
+                    if(charType == Character.UPPERCASE_LETTER)
+                        letters[j] = Character.toUpperCase(letters[j]);
                     
                     for(k = j; k<parts[i].length(); k++)
                          System.out.print(letters[k]);
