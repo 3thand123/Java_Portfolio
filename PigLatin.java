@@ -38,9 +38,16 @@ public class PigLatin
         int i,j, k;
         int vowels = 0;
         
+        int length;
+        
+        //int punctPlace = 0;
+        char punct = ' ';
+        boolean endPunct = false;
+        
         String FirstVowel = "";
         char firstVowel;
         
+        Character letter = new Character('a');
         
         char letters[];
         
@@ -53,50 +60,82 @@ public class PigLatin
         
         for(i = 0; i < parts.length; i++)
         {
+            //for(j = 0; j < parts[i].length(); j++)
+            //{
+                //if(letter.isLetter(parts[i].charAt(j)))
+                
+            ///}
+            length = parts[i].length();
             vowels = 0;
-            if(!ch.isLetter('a'))
-                break;
-            for(j = 0; j < parts[i].length(); j++)
+            if(letter.isLetter(parts[i].charAt(0)))
             {
-                vowels += vowel(parts[i].charAt(j));
-            }
-            if(vowels == 0)
-            {
-                System.out.print(parts[i] + "ay");
-            }
-            else 
-                if(vowels >= 1 && vowel(parts[i].charAt(0)) == 1)
+                for(j = 0; j < length; j++)
                 {
-                    System.out.print(parts[i] + "yay");
+                    vowels += vowel(parts[i].charAt(j));
                 }
-                else
+                if(vowels == 0)
                 {
-                    vowels = 0;
-                    j = 0;
-                    while(vowels == 0)
+                    System.out.print(parts[i] + "ay");
+                }
+                else 
+                    if(vowels >= 1 && vowel(parts[i].charAt(0)) == 1)
                     {
-                        vowels += vowel(parts[i].charAt(j));
-                        if(vowels==0)
-                            j++;
+                        System.out.print(parts[i] + "yay");
                     }
-                    firstVowel = parts[i].charAt(j);
+                    else
+                    {
+                        vowels = 0;
+                        j = 0;
+                        while(vowels == 0)
+                        {
+                            vowels += vowel(parts[i].charAt(j));
+                            if(vowels==0)
+                            j++;
+                        }
+                        firstVowel = parts[i].charAt(j);
                     
-                    int charType;
+                        int charType;
                     
-                    charType = Character.getType(parts[i].charAt(0));
+                        charType = Character.getType(parts[i].charAt(0));
                                    
-                    parts[i] = parts[i].toLowerCase();
+                        parts[i] = parts[i].toLowerCase();
                     
-                    letters = parts[i].toCharArray();
-                    if(charType == Character.UPPERCASE_LETTER)
-                        letters[j] = Character.toUpperCase(letters[j]);
+                        letters = parts[i].toCharArray();
+                        if(charType == Character.UPPERCASE_LETTER)
+                            letters[j] = Character.toUpperCase(letters[j]);
                     
-                    for(k = j; k<parts[i].length(); k++)
-                         System.out.print(letters[k]);
-                    for(k = 0; k < j; k++)  
-                        System.out.print(letters[k]);
-                    System.out.print("ay");
-                }
+                        if (!letter.isLetter(parts[i].charAt(length - 1)))
+                        {
+                            endPunct = true;
+                            punct = parts[i].charAt(length - 1);
+                        }
+                            
+                        if (endPunct == true)
+                            length = length - 1;
+                        
+                         
+                        for(k = j; k<length; k++)
+                        {
+                            //if(letter.isLetter(parts[i].charAt(k)))
+                                System.out.print(letters[k]);
+                            //else
+                                //punct = parts[i].charAt(k);
+                        }
+                        for(k = 0; k < j; k++)  
+                        {
+                            //if(letter.isLetter(parts[i].charAt(k)))
+                                System.out.print(letters[k]);
+                            //else
+                                //punct = parts[i].charAt(k);
+                        }
+                        System.out.print("ay");
+                        System.out.print(punct);
+                    }
+            }
+            else
+            {
+                System.out.print(parts[i]);
+            }
             System.out.print(" ");
         }
          System.out.print("\n");
